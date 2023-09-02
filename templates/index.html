@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF Plagiarism Checker</title>
+</head>
+<body>
+    <h1>PDF Plagiarism Checker</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="reference_pdf">Upload Reference PDF:</label>
+        <input type="file" name="reference_pdf" accept=".pdf" required>
+        <button type="submit">Check Plagiarism</button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div>
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    {% endwith %}
+</body>
+</html>

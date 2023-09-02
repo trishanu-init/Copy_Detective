@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plagiarism Check Results</title>
+</head>
+<body>
+    <h1>Plagiarism Check Results</h1>
+    <table>
+        <tr>
+            <th>File Name</th>
+            <th>Similarity (%)</th>
+        </tr>
+        {% for result in results %}
+        <tr>
+            <td>{{ result[0] }}</td>
+            <td>{{ result[1] * 100 | round(2) }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <p><a href="/">Back to Home</a></p>
+</body>
+</html>

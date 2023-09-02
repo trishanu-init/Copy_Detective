@@ -3,6 +3,10 @@ import PyPDF2
 from difflib import SequenceMatcher
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+from flask import Flask, request, render_template, flash, redirect, url_for
+
+app = Flask(__name__)
+app.secret_key = '6772'  # Replace with a secure secret key
 
 # Function to extract text from a PDF file
 def extract_text_from_pdf(pdf_path):
@@ -32,6 +36,8 @@ def check_plagiarism(main_pdf_path, pdf_directory):
     main_text = extract_text_from_pdf(main_pdf_path)
     main_text = preprocess_text(main_text)
 
+    results = []
+
     for filename in os.listdir(pdf_directory):
         if filename.endswith(".pdf"):
             pdf_path = os.path.join(pdf_directory, filename)
@@ -40,10 +46,28 @@ def check_plagiarism(main_pdf_path, pdf_directory):
 
             similarity = text_similarity(main_text, other_text)
 
-            print(f"Similarity with {filename}: {similarity * 100:.2f}%")
+            results.append((filename, similarity))
 
-if __name__ == "__main__":
-    main_pdf_path = "main_document.pdf"  # Path to the main PDF document
-    pdf_directory = "pdf_files"  # Directory containing other PDF files to compare
+    return results
 
-    check_plagiarism(main_pdf_path, pdf_directory)
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        # Handle the PDF file uploads
+        reference_pdf = request.files['reference_pdf']
+        pdf_directory = 'pdfs'
+        
+        if reference_pdf and reference_pdf.filename.endswith('.pdf'):
+            reference_pdf.save(os.path.join('uploads', 'reference_doc.pdf'))
+
+            # Run the plagiarism check
+            results = check_plagiarism(os.path.join('uploads', 'reference_doc.pdf'), pdf_directory)
+
+            return render_template('result.html', results=results)
+        else:
+            flash('Please upload a valid PDF file.')
+
+    return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
