@@ -15,6 +15,4 @@ Go to this page to download the .exe file.
 https://copy-detective.netlify.app/
     
 ## Demo
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/o9NpB2HWp2k?si=vmzfFSeHcBfmMba_/0.jpg)](http://www.youtube.com/watch?v=o9NpB2HWp2k?si=vmzfFSeHcBfmMba_ "Copy _Detective Hack The Classroom by MLH")
-
-
+[![Logo](https://github.com/trishanu-init/Copy_Detective/assets/85580785/1e38f0df-98fe-4093-aff1-5fb2e485710c)](http://www.youtube.com/watch?v=o9NpB2HWp2k?si=vmzfFSeHcBfmMba_ "Copy _Detective Hack The Classroom by MLH")
