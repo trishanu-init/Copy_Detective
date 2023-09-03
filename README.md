@@ -15,3 +15,6 @@ Go to this page to download the .exe file.
 https://copy-detective.netlify.app/
     
 ## Demo
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/o9NpB2HWp2k?si=vmzfFSeHcBfmMba_/0.jpg)](http://www.youtube.com/watch?v=o9NpB2HWp2k?si=vmzfFSeHcBfmMba_ "Copy _Detective Hack The Classroom by MLH")
+
+
